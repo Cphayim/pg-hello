@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Get version from commit message
-        id: get_version
         run: |
-          echo ::set-output name=version::${{ github.event.head_commit.message | replace('chore(release): ', '') }}
+          message=$(git log -1 --pretty=%B)
+          if echo "$message" | grep -q "v[0-9]\+\.[0-9]\+\.[0-9]\+"; then
+            version=$(echo "$message" | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+")
+            echo "Found version $version"
+          fi
