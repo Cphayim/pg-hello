@@ -38,8 +38,8 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Get version from commit message
         run: |
-          message=$(git log -1 --pretty=%B)
-          if echo "$message" | grep -q "v[0-9]\+\.[0-9]\+\.[0-9]\+"; then
-            version=$(echo "$message" | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+")
+          message=
+          if echo $(git log -1 --pretty=%B) | grep -q "v[0-9]\+\.[0-9]\+\.[0-9]\+"; then
+            version=$(echo $(git log -1 --pretty=%B) | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+")
             echo "Found version $version"
           fi
