@@ -38,4 +38,5 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Get version from commit message
         id: get_version
-        run: echo ::set-output name=version::${{ github.event.head_commit.message | replace('chore(release): ', '') }}
+        run: |
+          echo ::set-output name=version::${{ github.event.head_commit.message | replace('chore(release): ', '') }}
