@@ -37,4 +37,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Get Version
-        run: echo 123
+        run: echo ${{github.event.head_commit.message}}
