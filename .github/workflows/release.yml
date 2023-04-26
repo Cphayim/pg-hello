@@ -46,6 +46,7 @@ jobs:
 
       - name: Publish Packages
         run: |
+          echo $VERSION
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           pnpm publish
         env:
